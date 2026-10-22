@@ -7,15 +7,12 @@ Hive Music è una web app sociale dove gli utenti possono recensire album cercat
 ## Indice
 
 - [Struttura del progetto](#struttura-del-progetto)
-- [Requisiti](#requisiti)
-- [Installazione e configurazione](#installazione-e-configurazione)
 - [Schema del database](#schema-del-database)
 - [Autenticazione JWT](#autenticazione-jwt)
 - [API Endpoints](#api-endpoints)
 - [Client JavaScript (api.js)](#client-javascript-apijs)
 - [Polling in tempo reale](#polling-in-tempo-reale)
 - [Design System](#design-system)
-- [Note per la produzione](#note-per-la-produzione)
 
 ---
 
