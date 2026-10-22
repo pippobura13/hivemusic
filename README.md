@@ -48,61 +48,6 @@ hivemusic/
 
 ---
 
-## Requisiti
-
-- PHP 8.0 o superiore con le estensioni `pdo_mysql` e `curl` attive
-- MySQL 5.7+ o MariaDB 10.3+
-- Server web Apache (consigliato XAMPP per lo sviluppo locale)
-- Account Spotify Developer per le credenziali API
-
----
-
-## Installazione e configurazione
-
-### 1. Clona o copia i file nella root del server
-
-Per XAMPP: copia la cartella in `htdocs/hivemusic/`.
-
-### 2. Crea il file `.env`
-
-Copia il file di esempio e compila i valori:
-
-```
-DB_HOST=localhost
-DB_NAME=hivemusic
-DB_USER=root
-DB_PASS=
-
-SPOTIFY_CLIENT_ID=<il-tuo-client-id>
-SPOTIFY_CLIENT_SECRET=<il-tuo-client-secret>
-
-JWT_SECRET=<stringa-casuale-lunga-e-sicura>
-```
-
-> ⚠️ Non committare mai il file `.env` nel repository. È già incluso nel `.gitignore`.
-
-Le credenziali Spotify si ottengono creando un'app su [developer.spotify.com](https://developer.spotify.com/dashboard).
-
-### 3. Importa il database
-
-Crea il database e importa lo schema:
-
-```sql
-CREATE DATABASE hivemusic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-Poi importa il file `schema.sql` tramite phpMyAdmin o da terminale:
-
-```bash
-mysql -u root -p hivemusic < schema.sql
-```
-
-### 4. Verifica i permessi
-
-La cartella `uploads/avatars/` viene creata automaticamente al primo upload. Assicurati che il server web abbia i permessi di scrittura sulla directory del progetto.
-
----
-
 ## Schema del database
 
 Il database contiene le seguenti tabelle principali:
@@ -480,20 +425,5 @@ Palette "Honeycomb/Amber" definita in `shared.css`:
 | `--coral` | `#FF6B6B` | Errori, avvisi |
 | `--hive-900` | `#1a1510` | Background principale |
 | `--text` | `#F5F0E8` | Testo primario |
-
----
-
-## Note per la produzione
-
-Prima di portare il progetto in produzione:
-
-- **Disattivare il debug PHP** in `config.php`:
-  ```php
-  error_reporting(0);
-  ini_set('display_errors', 0);
-  ```
-- **Restringere CORS**: sostituire `Access-Control-Allow-Origin: *` con il dominio reale.
-- **Cambiare `JWT_SECRET`** con una stringa casuale lunga e sicura (almeno 32 caratteri).
-- **Cambiare `JWT_EXPIRY`** in base ai requisiti di sicurezza desiderati.
 - **Usare HTTPS** per proteggere i token in transito.
 - **Configurare un sistema di log** per gli errori di database e API, invece di stamparli al client.
